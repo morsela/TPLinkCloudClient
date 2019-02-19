@@ -8,9 +8,11 @@ Pod::Spec.new do |s|
   s.author           = { 'slmosl' => 'morsela@gmail.com' }
   s.source           = { :git => 'https://github.com/slmosl/TPLinkCloudClient.git', :tag => s.version.to_s }
 
+  s.swift_version = '4.2'
+
   s.platform = :osx
   s.osx.deployment_target = "10.10"
-
+  
   s.source_files = 'TPLinkCloudClient/**/*'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'Alamofire', '~> 4.8'
 end
