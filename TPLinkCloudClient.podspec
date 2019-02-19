@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TPLinkCloudClient'
-  s.version          = '0.1.0'
+  s.version          = '1.0.0'
   s.summary          = 'A swift library for managing TPLink cloud devices.'
   s.homepage         = 'https://github.com/slmosl/TPLinkCloudClient'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
