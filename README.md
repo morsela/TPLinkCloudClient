@@ -15,7 +15,7 @@ pod 'TPLinkCloudClient'
 
 ## Author
 
-slmosl, morsela@gmail.com
+Mor Sela, morsela@gmail.com
 
 ## License
 
