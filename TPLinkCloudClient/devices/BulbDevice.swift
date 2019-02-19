@@ -8,7 +8,7 @@
 
 import Cocoa
 
-protocol BulbDevice {
+public protocol BulbDevice {
     var supportsBrightnessAdjustment: Bool { get }
     
     func setBrightness(_ brightness: Int, completion: @escaping Completion)

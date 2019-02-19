@@ -8,23 +8,23 @@
 
 import Cocoa
 
-struct TPLinkDeviceInfo: Decodable {
-    let appServerUrl: String
-    let deviceId: String
-    let deviceName: String
-    let deviceType: String
-    let deviceModel: String
-    let alias: String
-    let fwId: String
-    let hwId: String
-    let deviceHwVer: String
-    let oemId: String
-    var status: Int
-    let role: Int
+public struct TPLinkDeviceInfo: Decodable {
+    public let appServerUrl: String
+    public let deviceId: String
+    public let deviceName: String
+    public let deviceType: String
+    public let deviceModel: String
+    public let alias: String
+    public let fwId: String
+    public let hwId: String
+    public let deviceHwVer: String
+    public let oemId: String
+    public var status: Int
+    public let role: Int
 }
 
-class TPLinkDevice {
-    enum State: Int {
+public class TPLinkDevice {
+    public enum State: Int {
         case off = 0
         case on = 1
         case unknown = 2
@@ -37,17 +37,17 @@ class TPLinkDevice {
             self = State.init(rawValue: value) ?? .off
         }
 
-        func isOn() -> Bool {
+        public func isOn() -> Bool {
             return self == .on
         }
         
-        func isOff() -> Bool {
+        public func isOff() -> Bool {
             return self == .off
         }
     }
     
-    let info: TPLinkDeviceInfo
-    var state: State = State.unknown
+    public let info: TPLinkDeviceInfo
+    public var state: State = State.unknown
     
     weak var client: TPLinkClient?
     

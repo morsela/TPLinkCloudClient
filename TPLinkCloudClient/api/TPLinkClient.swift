@@ -8,13 +8,13 @@
 
 import Alamofire
 
-enum APIResult<T> {
+public enum APIResult<T> {
     case success(T)
     case failure(Error)
 }
 
-typealias CompletionWith<T> = (APIResult<T>) -> Void
-typealias Completion = CompletionWith<Void>
+public typealias CompletionWith<T> = (APIResult<T>) -> Void
+public typealias Completion = CompletionWith<Void>
 
 public struct APIError: Error {
     public let message: String
@@ -24,11 +24,14 @@ public struct APIError: Error {
     }
 }
 
-class TPLinkClient {
+public class TPLinkClient {
     private var token: String?
 
     private var isInitialized: Bool {
         return token != nil
+    }
+    
+    public init() {
     }
     
     func request<ResponseType: Decodable, T>(method: String, host: String = "https://wap.tplinkcloud.com", parameters: [String: Any], completion: @escaping CompletionWith<T>, handler: @escaping (ResponseType) -> T) {
@@ -57,7 +60,7 @@ class TPLinkClient {
         }
     }
 
-    func login(user: String, password: String, termId: String, completion: @escaping Completion) {
+    public func login(user: String, password: String, termId: String, completion: @escaping Completion) {
         let params = ["cloudPassword": password,
                       "cloudUserName": user,
                       "terminalUUID": termId]
@@ -66,7 +69,7 @@ class TPLinkClient {
         })
     }
     
-    func listDevices(completion: @escaping CompletionWith<[TPLinkDevice]>) {
+    public func listDevices(completion: @escaping CompletionWith<[TPLinkDevice]>) {
         request(method: "getDeviceList", parameters: [:], completion: completion, handler: { [weak self] (data: ListDevicesResponse) in
             guard let strongSelf = self else { return [] }
 
@@ -74,7 +77,7 @@ class TPLinkClient {
         })
     }
     
-    func run(_ command: String, deviceId: String, appServerUrl: String, completion: @escaping CompletionWith<Data>) {
+    public func run(_ command: String, deviceId: String, appServerUrl: String, completion: @escaping CompletionWith<Data>) {
         let params = ["deviceId": deviceId,
                       "requestData": command]
         
@@ -108,7 +111,7 @@ class TPLinkClient {
         }
     }
     
-    func refreshDevicesState(devices: [TPLinkDevice], completion: @escaping Completion) {
+    public func refreshDevicesState(devices: [TPLinkDevice], completion: @escaping Completion) {
         let dispatchGroup = DispatchGroup()
         
         for device in devices {

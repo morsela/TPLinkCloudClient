@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class TPLinkHS100: TPLinkDevice {
+public class TPLinkHS100: TPLinkDevice {
     public override func powerOn(completion: @escaping Completion) {
         setState(isOn: true, completion: completion)
     }
@@ -17,7 +17,7 @@ class TPLinkHS100: TPLinkDevice {
         setState(isOn: false, completion: completion)
     }
     
-    public func sysInfo(completion: @escaping CompletionWith<SysInfoCodable>) {
+    func sysInfo(completion: @escaping CompletionWith<SysInfoCodable>) {
         let sysInfoRequest = SysInfoCodable(system: SysInfoCodable.System(sysInfo: SysInfo(relayState: nil)))
         
         run(sysInfoRequest, responseType: SysInfoCodable.self, completion: completion)

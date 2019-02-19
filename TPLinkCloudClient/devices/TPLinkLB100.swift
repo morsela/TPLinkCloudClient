@@ -8,8 +8,8 @@
 
 import Cocoa
 
-class TPLinkLB100: TPLinkDevice & BulbDevice {
-    var brightness: Int = 100
+public class TPLinkLB100: TPLinkDevice & BulbDevice {
+    public var brightness: Int = 100
     
     public override func powerOn(completion: @escaping Completion) {
         setState(isOn: true, completion: completion)
@@ -19,7 +19,7 @@ class TPLinkLB100: TPLinkDevice & BulbDevice {
         setState(isOn: false, completion: completion)
     }
     
-    func setBrightness(_ brightness: Int, completion: @escaping Completion) {
+    public func setBrightness(_ brightness: Int, completion: @escaping Completion) {
         setState(isOn: true, brightness: brightness, completion: completion)
     }
     
